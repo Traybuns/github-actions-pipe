@@ -1,10 +1,10 @@
-name: Hello Workflow
+echo 'name: Hello Workflow
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
 
 jobs:
@@ -17,9 +17,10 @@ jobs:
         shell: bash
 
   goodbye:
-    needs: hello
+    needs: hello  # This ensures goodbye runs after hello
     runs-on: ubuntu-latest
     steps:
       - name: Goodbye World
         run: echo "Goodbye World"
-        shell: bash
+        shell: bash  
+
